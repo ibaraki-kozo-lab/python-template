@@ -1,0 +1,26 @@
+# PRを出したときと main にpushしたときに，手元と同じ make（lint，typecheck，test）を実行する．
+# 結果はPRの下部と Actions のタブに出る
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+# 同じPRに新しくpushしたら，前の実行は止める．main では止めずに順に待つ
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+      - name: Check
+        run: make check

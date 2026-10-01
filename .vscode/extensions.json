@@ -1,0 +1,9 @@
+{
+  // フォルダを開くと，VS Code が入れるか尋ねる拡張機能
+  "recommendations": [
+    // Python：実行，デバッガ，型の表示（Pylance）
+    "ms-python.python",
+    // Ruff：保存したときに書式を整える（ruff format と同じ）
+    "charliermarsh.ruff"
+  ]
+}

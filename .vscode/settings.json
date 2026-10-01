@@ -1,0 +1,9 @@
+{
+  // uv が作った .venv の Python を使う
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  // 保存したら，ruff で書式を整える（ruff format と同じ）
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  }
+}

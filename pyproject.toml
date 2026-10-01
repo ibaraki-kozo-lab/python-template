@@ -1,0 +1,36 @@
+[project]
+# プロジェクトの名前．テンプレートから作ったら変える（README.md の「はじめにやること」）．
+# - を _ にしたものが，src/ の下のパッケージのフォルダの名前になる
+name = "my-package"
+version = "0.1.0"
+description = "（何をするリポジトリかを1行で）"
+readme = "README.md"
+requires-python = ">=3.12"
+# 使うパッケージ．uv add で足すと，ここと uv.lock に書かれる
+dependencies = [
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+# 検査の道具．uv add --dev で足すと，ここに書かれる
+dev = [
+    "pyright>=1.1.414",
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+]
+
+[tool.ruff]
+# 試すためのノートブック（notebooks/）と，Markdown の中のコードは検査しない
+extend-exclude = ["*.md", "notebooks"]
+
+[tool.ruff.lint]
+# ruff のふだんの検査に，import の並べ方（I）を加える
+extend-select = ["I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

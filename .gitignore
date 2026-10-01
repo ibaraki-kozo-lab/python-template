@@ -1,0 +1,23 @@
+# Python が作るもの
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# uv が作る仮想環境
+.venv
+
+# 計算の出力とログ
+results/
+*.log
+
+# Jupyter が作るもの
+.ipynb_checkpoints/
+
+# 秘密の値を書いたファイル（コミットしない）
+.env
+
+# macOS が作るもの
+.DS_Store
