@@ -4,7 +4,7 @@
 
 ## 準備
 
-uv，Make，Gitを使う．入れ方は，研究室ハンドブックの「環境構築（uv）」「Make」「はじめてのGit・GitHub」にある．このテンプレートは，ハンドブックの「実践：Pythonパッケージ」まで読んだ前提で書いてある．
+uv，Make，Gitを使う．入れ方は，[研究室ハンドブック][hb]の「[環境構築（uv）][hb-uv-install]」「[Make][hb-make-install]」「[はじめてのGit・GitHub][hb-git]」にある．このテンプレートは，ハンドブックの「[実践：Pythonパッケージ][hb-package]」まで読んだ前提で書いてある．ハンドブックは研究室の人だけが読めるサイトで，開くときは，管理者が登録した大学のメールアドレスを使う．
 
 VS Codeでフォルダを開くと，おすすめの拡張機能（Python，Ruff）を入れるか尋ねられる．入れると，保存するたびに書式が整う．
 
@@ -23,7 +23,7 @@ VS Codeでフォルダを開くと，おすすめの拡張機能（Python，Ruff
 
 ### パッケージの名前を変える
 
-リポジトリの名前が `slope-study` なら，プロジェクトの名前を `slope-study`，パッケージの名前を `slope_study` にする．`import` で書く名前には `-` を使えないので，`-` を `_` にしたものがパッケージの名前になる（ハンドブックの「実践：Pythonパッケージ」）．
+リポジトリの名前が `slope-study` なら，プロジェクトの名前を `slope-study`，パッケージの名前を `slope_study` にする．`import` で書く名前には `-` を使えないので，`-` を `_` にしたものがパッケージの名前になる（ハンドブックの「[実践：Pythonパッケージ][hb-package]」の「[パッケージの形でプロジェクトを作る][hb-package-init]」）．
 
 1. パッケージのフォルダの名前を変える
 
@@ -85,7 +85,7 @@ uv add pandas
 | `make test` | テストだけを実行する |
 | `make help` | この一覧を表示する |
 
-`make` が実行する検査は次の3つである．道具の使い方は，ハンドブックの「品質チェック」にある．
+`make` が実行する検査は次の3つである．道具の使い方は，ハンドブックの「[品質チェック][hb-quality]」にある．
 
 | 検査 | 道具 | 確かめること |
 |------|------|--------------|
@@ -97,7 +97,7 @@ uv add pandas
 
 - 2つ以上のスクリプトやテストから使う関数は，`src/my_package/` のファイルに書く．`__init__.py` の `import` の行と `__all__` に足すと，どのフォルダのファイルからも `from my_package import 関数の名前` で読み込める．型ヒントとdocstringを書き，答えの分かる問題で確かめるテストを `tests/` に足す（小数は `pytest.approx` で比べる）
 - 1回の解析や1枚の図を作るものは，`scripts/` に置く．入力は `data/` から読み，出力は `results/` に書く．順に実行するものは，`01_preprocess.py` のように番号を付けると，順番が分かる
-- Jupyterで試すときは，`uv add --dev jupyterlab` で入れ（ハンドブックの「Jupyter」），ノートブックは `notebooks/` を作って置く．`notebooks/` は `make` の検査から外してある．コミットする前に出力を消し，結果として残す計算はスクリプトにする
+- Jupyterで試すときは，`uv add --dev jupyterlab` で入れ（ハンドブックの「[Jupyter][hb-jupyter]」），ノートブックは `notebooks/` を作って置く．`notebooks/` は `make` の検査から外してある．コミットする前に出力を消し（同じページの「[ノートブックをGitで扱う][hb-jupyter-git]」），結果として残す計算はスクリプトにする
 
 ## 結果を残す
 
@@ -107,7 +107,7 @@ uv add pandas
 2. `git rev-parse HEAD` で表示されるコミットの番号と，乱数の種（使うなら）を，結果のファイルと一緒に記録する
 3. パッケージのバージョンは `uv.lock` に残っているので，同じコミットを `uv run` すれば同じバージョンで計算される
 
-スクリプトの中で記録する書き方は，ハンドブックの「実践：パラメータスタディ」の「再現できるように記録する」にある．時間のかかる計算は，同じページの手順で研究室の計算機で回す．
+スクリプトの中で記録する書き方は，ハンドブックの「[実践：パラメータスタディ][hb-study]」の「[再現できるように記録する][hb-study-reproduce]」にある．時間のかかる計算は，同じページの手順で研究室の計算機で回す．
 
 ## 困ったとき
 
@@ -120,4 +120,20 @@ uv add pandas
 
 ## 変更の流れ
 
-変更はブランチで作り，PRを出す．PRではCIが `make` を実行する．✗ が付いたら，**Details** からログを開いて直す（ハンドブックの「ブランチとPR」と「GitHub Actions（CI）」）．PRの本文は，ひな形のChecklistを埋める．このリポジトリの決まりは `AGENTS.md` にある．
+変更はブランチで作り，PRを出す．PRではCIが `make` を実行する．✗ が付いたら，**Details** からログを開いて直す（ハンドブックの「[ブランチとPR][hb-branches]」と「[GitHub Actions（CI）][hb-actions]」）．PRの本文は，ひな形のChecklistを埋める．このリポジトリの決まりは `AGENTS.md` にある．
+
+<!-- 研究室ハンドブックへのリンク．ハンドブックのページの場所が変わったら，ここを直す -->
+
+[hb]: https://lab-handbook-ein.pages.dev/
+[hb-uv-install]: https://lab-handbook-ein.pages.dev/python/uv/#install
+[hb-make-install]: https://lab-handbook-ein.pages.dev/dev/make/#install
+[hb-git]: https://lab-handbook-ein.pages.dev/dev/git/
+[hb-package]: https://lab-handbook-ein.pages.dev/practice/package/
+[hb-package-init]: https://lab-handbook-ein.pages.dev/practice/package/#init
+[hb-quality]: https://lab-handbook-ein.pages.dev/python/quality/
+[hb-jupyter]: https://lab-handbook-ein.pages.dev/python/jupyter/
+[hb-jupyter-git]: https://lab-handbook-ein.pages.dev/python/jupyter/#notebooks-in-git
+[hb-study]: https://lab-handbook-ein.pages.dev/practice/parameter-study/
+[hb-study-reproduce]: https://lab-handbook-ein.pages.dev/practice/parameter-study/#reproduce
+[hb-branches]: https://lab-handbook-ein.pages.dev/dev/branches/
+[hb-actions]: https://lab-handbook-ein.pages.dev/dev/actions/
